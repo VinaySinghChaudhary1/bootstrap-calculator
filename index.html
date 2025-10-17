@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .calculator {
+            max-width: 400px;
+            margin: 50px auto;
+        }
+        .display {
+            height: 60px;
+            font-size: 2rem;
+            text-align: right;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card calculator">
+            <div class="card-body">
+                <div id="display" class="display">0</div>
+                <div class="btn-group d-flex flex-wrap">
+                    <button class="btn btn-secondary w-25" onclick="clearDisplay()">C</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('/')">/</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('*')">*</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('-')">-</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('7')">7</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('8')">8</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('9')">9</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('+')">+</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('4')">4</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('5')">5</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('6')">6</button>
+                    <button class="btn btn-secondary w-25" onclick="calculateResult()">=</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('1')">1</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('2')">2</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('3')">3</button>
+                    <button class="btn btn-secondary w-25" onclick="appendToDisplay('0')">0</button>
+                </div>
+            </div>
+        </div>
+        <footer>© 2025 Vinay Calculator</footer>
+    </div>
+    <script>
+        let display = document.getElementById('display');
+
+        function appendToDisplay(value) {
+            if (display.innerText === '0') {
+                display.innerText = value;
+            } else {
+                display.innerText += value;
+            }
+        }
+
+        function clearDisplay() {
+            display.innerText = '0';
+        }
+
+        function calculateResult() {
+            try {
+                display.innerText = eval(display.innerText);
+            } catch (e) {
+                display.innerText = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
